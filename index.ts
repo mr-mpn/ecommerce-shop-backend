@@ -9,5 +9,9 @@ import { routes } from "./src/api/routes"
 
 export const handler = middy()
     .use(httpEventNormalizer())
-    .use(cors())
+    .use(cors({
+        origin: '*',
+        headers: 'Content-Type,Authorization,X-Amz-Date,X-Api-Key,X-Amz-Security-Token',
+        credentials: false
+    }))
     .handler(httpRouterHandler(routes))
