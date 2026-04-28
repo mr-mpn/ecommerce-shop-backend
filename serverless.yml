@@ -5,10 +5,14 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs18.x
-  region: us-east-1
+  region: eu-central-1
   stage: ${opt:stage, 'dev'}
   environment:
     NODE_ENV: ${self:provider.stage}
+    MONGODB_URI: ${ssm:/backend/${self:provider.stage}/MONGODB_URI}
+    ADMIN_USERNAME: ${ssm:/backend/${self:provider.stage}/ADMIN_USERNAME}
+    ADMIN_PASSWORD: ${ssm:/backend/${self:provider.stage}/ADMIN_PASSWORD}
+    JWT_SECRET: ${ssm:/backend/${self:provider.stage}/JWT_SECRET}
 
 plugins:
   - serverless-plugin-typescript
@@ -30,7 +34,6 @@ functions:
 
 package:
   exclude:
-    - node_modules/**
     - .git/**
     - src/**/*.test.ts
     - jest.config.js

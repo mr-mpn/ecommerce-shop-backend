@@ -32,7 +32,8 @@ export const deleteItem = middy()
             }
 
             //console.log(event)
-            const itemId = event.body.id;
+            const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
+            const itemId = body.id;
             console.log(`the following id is going to be removed ${itemId}`);
 
             // deleting from the mongodb
