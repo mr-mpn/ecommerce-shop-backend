@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "ecommerce_eerverless_backend",
   "version": "1.0.0",
   "description": "TypeScript Lambda backend with Middy middleware",
   "main": "dist/index.js",

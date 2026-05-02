@@ -2,9 +2,11 @@ service: backend
 
 frameworkVersion: '3'
 
+configValidationMode: warn
+
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs22.x
   region: eu-central-1
   stage: ${opt:stage, 'dev'}
   environment:
@@ -19,7 +21,7 @@ plugins:
   - serverless-offline
 
 functions:
-  api:
+  ecommerce_shop:
     handler: index.handler
     timeout: 30
     events:
